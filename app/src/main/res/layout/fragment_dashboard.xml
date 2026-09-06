@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A3B3E185">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <include layout="@layout/component_header" />
+        <include layout="@layout/component_card_balance" />
+
+        <include layout="@layout/component_card_today" />
+
+        <include layout="@layout/component_card_monthly" />
+
+        <include layout="@layout/component_card_quick_actions" />
+
+    </LinearLayout>
+
+</ScrollView>
