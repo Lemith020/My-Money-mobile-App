@@ -1,263 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light"
-    android:padding="16dp">
+    android:background="#CACA1E">
 
-    <ScrollView
+    <!-- Screen Content Area -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_marginBottom="60dp" />
 
-        <LinearLayout
-            android:id="@+id/mainLayout"
+    <!-- Curved Bottom App Bar Wrapper -->
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        app:backgroundTint="#6BFF4F"
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="8dp"
+        app:fabCradleRoundedCornerRadius="16dp"
+        app:fabCradleVerticalOffset="0dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:animateLayoutChanges="true">
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            app:elevation="0dp"
+            app:itemIconTint="#100F10"
+            app:itemTextColor="#24242C"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_nav_menu" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="💰 My Money"
-                android:textColor="@color/text_dark"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="20dp" />
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardBalance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:background="@color/primary"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Available Balance"
-                        android:textColor="#E0E0E0"
-                        android:textSize="14sp"/>
-                    <TextView
-                        android:id="@+id/tvBalance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rs. 5,500"
-                        android:textColor="#FFFFFF"
-                        android:textSize="32sp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/tvMoneyReceived"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Money Received: Rs. 30,000"
-                        android:layout_marginTop="8dp"
-                        android:textColor="#E0E0E0"
-                        android:textSize="12sp"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardToday"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TODAY"
-                        android:textColor="@color/text_gray"
-                        android:textSize="12sp"
-                        android:textStyle="bold"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="10dp">
-
-                        <TextView
-                            android:id="@+id/tvTodaySpent"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="Spent\nRs. 850"
-                            android:textColor="@color/warning_red"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:id="@+id/tvTodayRemaining"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="Remaining\nRs. 150"
-                            android:textColor="@color/success_green"
-                            android:textSize="18sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-
-                    <ProgressBar
-                        android:id="@+id/budgetProgress"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="8dp"
-                        android:layout_marginTop="15dp"
-                        android:progress="85"
-                        android:progressTint="@color/primary" />
-
-                    <TextView
-                        android:id="@+id/tvBudgetStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="🟢 Rs. 150 under budget"
-                        android:textColor="@color/success_green"
-                        android:textSize="12sp"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#EAEAEA"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="10dp"/>
-
-                    <TextView
-                        android:id="@+id/tvDayCompare"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🔄 Yesterday: Rs. 1,200 | Today: Rs. 850"
-                        android:textColor="@color/text_dark"
-                        android:textSize="13sp"/>
-                    <TextView
-                        android:id="@+id/tvSavedMsg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🎉 You saved Rs. 350 today!"
-                        android:textColor="@color/success_green"
-                        android:textSize="13sp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardCategories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🏷️ Expenses by Category"
-                        android:textColor="@color/text_dark"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="12dp"/>
-
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="6dp">
-                        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="🍛 Food" android:textColor="@color/text_dark"/>
-                        <TextView android:id="@+id/tvFoodAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 8,500" android:textStyle="bold" android:textColor="@color/text_dark"/>
-                    </LinearLayout>
-
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="6dp">
-                        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="🏠 Boarding" android:textColor="@color/text_dark"/>
-                        <TextView android:id="@+id/tvBoardingAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 8,000" android:textStyle="bold" android:textColor="@color/text_dark"/>
-                    </LinearLayout>
-
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="6dp">
-                        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="🚌 Transport" android:textColor="@color/text_dark"/>
-                        <TextView android:id="@+id/tvTransportAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 4,200" android:textStyle="bold" android:textColor="@color/text_dark"/>
-                    </LinearLayout>
-
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-                        <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="🛒 Other" android:textColor="@color/text_dark"/>
-                        <TextView android:id="@+id/tvOtherAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rs. 2,300" android:textStyle="bold" android:textColor="@color/text_dark"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardInsights"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="80dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="📊 Monthly Summary"
-                        android:textColor="@color/text_dark"
-                        android:textSize="16sp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/tvMonthlyAvg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Average/day: Rs. 817\nHighest day: Rs. 1,450"
-                        android:textColor="@color/text_gray"
-                        android:textSize="14sp"/>
-
-                    <TextView
-                        android:id="@+id/tvMoneyLast"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="💡 Money can last ~6 days"
-                        android:textColor="@color/primary_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
-    </ScrollView>
-
+    <!-- Floating Action Button (+) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAdd"
+        android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/primary"
+        android:contentDescription="Add Transaction"
         android:src="@android:drawable/ic_input_add"
-        app:tint="#FFFFFF" />
+        app:backgroundTint="#07930D"
+        app:elevation="6dp"
+        app:layout_anchor="@id/bottom_app_bar"
+        app:tint="#EDEDE7" />
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

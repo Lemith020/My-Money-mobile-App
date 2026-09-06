@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#4361EE</color>
-    <color name="primary_dark">#3F37C9</color>
-    <color name="bg_light">#F8F9FA</color>
+    <!-- Main App Colors -->
+    <color name="primary">#6200EE</color>
+    <color name="primary_dark">#3700B3</color>
+    <color name="accent">#03DAC6</color>
+
+    <!-- UI Background & Cards -->
+    <color name="bg_main">#8BC067</color>
     <color name="card_bg">#FFFFFF</color>
-    <color name="text_dark">#2B2D42</color>
-    <color name="text_gray">#8D99AE</color>
-    <color name="success_green">#4CAF50</color>
-    <color name="warning_red">#EF233C</color>
+    <color name="text_dark">#1E293B</color>
+    <color name="text_muted">#64748B</color>
+
+    <!-- Financial Status Colors -->
+    <color name="income_green">#10B981</color>
+    <color name="expense_red">#EF4444</color>
+    <color name="progress_purple">#8B5CF6</color>
 </resources>
