@@ -83,7 +83,7 @@ public class AddTransactionDialog {
 
         dialog.show();
 
-        // Dialog Width එක Screen එකේ 90% දක්වා පළල් කිරීම සහ Shadow Cutouts අයින් කිරීම
+
         if (dialog.getWindow() != null) {
             dialog.getWindow().setLayout(
                     (int) (context.getResources().getDisplayMetrics().widthPixels * 0.90),
