@@ -133,14 +133,14 @@ public class DashboardFragment extends Fragment {
         double todaySpent = calculationService.getTodaySpent();
         double dailyLimit = budget != null ? budget.getDailyLimit() : 0;
 
-        // 2. Service එකෙන් Total Income (Money Received) ලබා ගැනීම
+
         double totalIncome = calculationService.getMoneyReceived();
 
-        // Money Received එකට = monthlyBudgetAmount + totalIncome
+        // Money Received  = monthlyBudgetAmount + totalIncome
         double moneyReceivedCardValue = monthlyBudgetAmount + totalIncome;
 
 
-        // Available Balance එකට = (monthlyBudgetAmount + totalIncome) - monthlySpent
+        // Available Balance  = (monthlyBudgetAmount + totalIncome) - monthlySpent
         double availableBalance = moneyReceivedCardValue - monthlySpent;
 
         // Bind data to components

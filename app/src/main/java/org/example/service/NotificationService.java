@@ -35,7 +35,7 @@ public class NotificationService {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,
                     CHANNEL_NAME,
-                    NotificationManager.IMPORTANCE_HIGH); // High Importance ලබා දීම
+                    NotificationManager.IMPORTANCE_HIGH); // High Importance
             channel.setDescription("Alerts for daily limit and monthly budget summary");
 
             NotificationManager manager = context.getSystemService(NotificationManager.class);

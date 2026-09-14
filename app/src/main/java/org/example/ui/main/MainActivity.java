@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fabAdd = findViewById(R.id.fab_add);
         if (fabAdd != null) {
             fabAdd.setOnClickListener(v -> new AddTransactionDialog(this, () -> {
-                // Save කළ පසු දැනට active වී ඇති Fragment එක reload කිරීම
+
                 Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
                 if (currentFragment instanceof DashboardFragment) {
                     loadFragment(new DashboardFragment());
