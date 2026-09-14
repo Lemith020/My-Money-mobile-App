@@ -16,10 +16,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.example.R;
+import org.example.data.local.SqliteBudgetRepository;
 import org.example.data.local.SqliteTransactionRepository;
 import org.example.data.preference.PreferenceManager;
+import org.example.domain.model.Budget;
 import org.example.domain.model.Transaction;
 import org.example.domain.model.TransactionType;
+import org.example.domain.repository.BudgetRepository;
 import org.example.domain.repository.TransactionRepository;
 import org.example.util.CurrencyFormatter;
 import org.example.util.DateUtils;
@@ -27,6 +30,7 @@ import org.example.util.DateUtils;
 public class ReportsFragment extends Fragment {
 
     private TransactionRepository transactionRepository;
+    private BudgetRepository budgetRepository;
     private PreferenceManager preferenceManager;
 
     @Nullable
@@ -40,6 +44,7 @@ public class ReportsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         transactionRepository = new SqliteTransactionRepository(requireContext());
+        budgetRepository = new SqliteBudgetRepository(requireContext());
         preferenceManager = new PreferenceManager(requireContext());
 
         List<Transaction> transactions = transactionRepository.getAllTransactions();
@@ -66,10 +71,15 @@ public class ReportsFragment extends Fragment {
             }
         }
 
+        // Monthly Budget  Total Income
+        Budget budget = budgetRepository.getBudget();
+        double monthlyBudget = budget != null ? budget.getMonthlyBudget() : 0;
+        double displayTotalIncome = totalIncome + monthlyBudget;
+
         // --- Color Force Fix using SpannableString ---
 
-        // Income (Green)
-        String incomeFormatted = CurrencyFormatter.format(totalIncome, currencySymbol);
+
+        String incomeFormatted = CurrencyFormatter.format(displayTotalIncome, currencySymbol);
         SpannableString incomeSpannable = new SpannableString(incomeFormatted);
         incomeSpannable.setSpan(new ForegroundColorSpan(Color.parseColor("#10B981")), 0, incomeFormatted.length(), 0);
         textTotalIncome.setText(incomeSpannable);
