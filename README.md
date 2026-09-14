@@ -10,23 +10,69 @@
 
 ---
 
-## 📱 Application features
+## 📱 Application Preview & Screenshots
 
+### 1. Main Dashboard
 <p align="center">
-  <img src="app/images/dashboard.png" width="250" alt="Dashboard" />
-  <img src="app/images/add_income,expenses.png" width="250" alt="Add Transaction" />
-  <img src="app/images/search.png" width="250" alt="Transactions List & Search" />
+  <img src="app/images/dashboard.png" width="300" alt="Dashboard" />
 </p>
-
-<p align="center">
-  <img src="app/images/report.png" width="250" alt="Financial Report" />
-  <img src="app/images/generate_pdf.png" width="250" alt="PDF Export" />
-  <img src="app/images/setting.png" width="250" alt="Settings & Budget Setup" />
-</p>
+<blockquote>
+  <b>Overview:</b> Displays available balance, daily limit progress, and monthly budget summary with quick action buttons.
+</blockquote>
 
 ---
 
-## ✨ Key Features
+### 2. Add Expense & Income
+<p align="center">
+  <img src="app/images/add_income,expenses.png" width="300" alt="Add Transaction" />
+</p>
+<blockquote>
+  <b>Overview:</b> Dialog window to quickly record income or expense transactions with category and optional notes.
+</blockquote>
+
+---
+
+### 3. Transaction History & Search
+<p align="center">
+  <img src="app/images/search.png" width="300" alt="Search Transactions" />
+</p>
+<blockquote>
+  <b>Overview:</b> List of all recorded transactions with dynamic search and filtering options.
+</blockquote>
+
+---
+
+### 4. Financial Reports
+<p align="center">
+  <img src="app/images/report.png" width="300" alt="Financial Report" />
+</p>
+<blockquote>
+  <b>Overview:</b> Summary of total income vs. total expenses along with category-wise spending breakdowns.
+</blockquote>
+
+---
+
+### 5. PDF Export
+<p align="center">
+  <img src="app/images/generate_pdf.png" width="300" alt="PDF Export" />
+</p>
+<blockquote>
+  <b>Overview:</b> Instantly generates downloadable and printable PDF summaries of monthly transactions.
+</blockquote>
+
+---
+
+### 6. App Settings
+<p align="center">
+  <img src="app/images/setting.png" width="300" alt="Settings" />
+</p>
+<blockquote>
+  <b>Overview:</b> Configure monthly budget limits, daily limits, custom currency symbols, or reset app data.
+</blockquote>
+
+---
+
+## 💸 Key Features
 
 - 📊 **Dynamic Dashboard:** Real-time visibility into your available balance, total monthly spent, and today's limit progress.
 - 💸 **Expense & Income Tracking:** Quickly log daily transactions with categories and notes.
