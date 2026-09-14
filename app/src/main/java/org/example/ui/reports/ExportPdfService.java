@@ -1,11 +1,14 @@
 package org.example.ui.reports;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
+import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -46,11 +49,35 @@ public class ExportPdfService {
             FileOutputStream outputStream = new FileOutputStream(file);
             document.writeTo(outputStream);
             outputStream.close();
-            Toast.makeText(context, "Report exported to " + file.getPath(), Toast.LENGTH_LONG).show();
+
+            Toast.makeText(context, "Report exported successfully!", Toast.LENGTH_SHORT).show();
+
+
+            openPdfFile(file);
         } catch (IOException e) {
             Toast.makeText(context, "Export failed", Toast.LENGTH_SHORT).show();
         }
 
         document.close();
+    }
+
+    private void openPdfFile(File file) {
+        try {
+            Uri pdfUri = FileProvider.getUriForFile(
+                    context,
+                    context.getPackageName() + ".provider",
+                    file
+            );
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(pdfUri, "application/pdf");
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            context.startActivity(Intent.createChooser(intent, "Open Report PDF"));
+        } catch (Exception e) {
+
+            Toast.makeText(context, "Report exported to " + file.getPath(), Toast.LENGTH_LONG).show();
+        }
     }
 }
